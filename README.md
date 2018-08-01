@@ -80,26 +80,6 @@ These steps apply to any massive data load, but especially in case of deletions.
 
 
 
-**PREPARING THE JOBS**
-	Before creating a job, ask yourself which job type is best.
-	Upsert is great but is very resource intensive.
-	Maybe think about using the BULK Api.
-	In all cases, study what operation you do and make sure it is the right one.
-	Once that is done...
-
-	As such, you are able to create insert, upsert, query and deletion jobs, and change select parts of it.
-	This is important because this means you can:
-	- Create a new Sandbox
-	- In Jitterbit, create a new Folder for each operation type you will do. Name it "mydatauploadname 20180805" for example. You will put your jobs in there for easier archival.
-	- Prepare each job. Rename them from the default 'Account Insert' to  1 - Account upsert, 2 - Contact upsert, etc.
-	In the end, you will have 1 through X of jobs you need to run sequentially, then additional numbers that are added to finalize any rejects from those loads if needed.
-	- Do a dummy load in sandbox. Make sure to set the start line to something near the end so you don't clog the sandbox up with all the data.
-	- Make sure everything looks fine.
-
-	If something fails, you correct the TRANSFORMATION, not the file, except in cases where it would be prohibitively long to do so. Meaning if you have to redo the load, you can run the same scripts you did before to have a nice CSV to upload.
-
-
-
 **SHIT YOU DO BEFORE YOU DO ANYTHING ELSE**
 - Login to Prod. Is there a weekly backup running, encoded as UTF-8, in Setup > Data Export ?
 	- Nope
@@ -131,6 +111,26 @@ These steps apply to any massive data load, but especially in case of deletions.
 	- Is there enough space in the org to accomodate the extra data ? (this should be pre-project checks, but check it again)
 	- Are volumes to load enough to cause problems API-call wise ? If so, you may need to consider using the BULK jobs instead of normal operations
 	- In case data volumes are REALLY big, you will need to abide by LDV (large data volume) best practices, including not doing upserts, defering sharing calculations, and grouping records by Parent record and owner before uploading. Full list of these is available here: https://resources.docs.salesforce.com/sfdc/pdf/salesforce_large_data_volumes_bp.pdf
+
+
+
+**PREPARING THE JOBS**
+	Before creating a job, ask yourself which job type is best.
+	Upsert is great but is very resource intensive.
+	Maybe think about using the BULK Api.
+	In all cases, study what operation you do and make sure it is the right one.
+	Once that is done...
+
+	As such, you are able to create insert, upsert, query and deletion jobs, and change select parts of it.
+	This is important because this means you can:
+	- Create a new Sandbox
+	- In Jitterbit, create a new Folder for each operation type you will do. Name it "mydatauploadname 20180805" for example. You will put your jobs in there for easier archival.
+	- Prepare each job. Rename them from the default 'Account Insert' to  1 - Account upsert, 2 - Contact upsert, etc.
+	In the end, you will have 1 through X of jobs you need to run sequentially, then additional numbers that are added to finalize any rejects from those loads if needed.
+	- Do a dummy load in sandbox. Make sure to set the start line to something near the end so you don't clog the sandbox up with all the data.
+	- Make sure everything looks fine.
+
+	If something fails, you correct the TRANSFORMATION, not the file, except in cases where it would be prohibitively long to do so. Meaning if you have to redo the load, you can run the same scripts you did before to have a nice CSV to upload.
 
 
 
