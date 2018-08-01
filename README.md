@@ -15,7 +15,7 @@ If you delete your data, and the amount deleted is bigger than what is in the re
 If you update data, the moment the update hits the database (the DML) is done, the old data is lost. Forever.
 You could try seing if you turned on field history.
 
-If worst comes to worst you can pay 10 000€ (not joking) to Salesforce to restore your data. https://help.salesforce.com/articleView?id=000003594
+If worst comes to worst you can pay 10 000€ (not joking) to Salesforce to restore your data. https://help.salesforce.com/articleView?id=000003594&type=1
 
 But let's try to avoid these situations.
 These steps apply to any massive data load, but especially in case of deletions.
