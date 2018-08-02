@@ -32,7 +32,6 @@ These steps apply to any massive data load, but especially in case of deletions.
 	If you are loading a big amount of data or the org is mature, read this document entirely before doing anything.
 	https://resources.docs.salesforce.com/sfdc/pdf/salesforce_large_data_volumes_bp.pdf
 
-
 - Deletions
 	Apart from the "GENERAL DATA OPERATIONS STUFF" section, read this all.
 	If you delete data in prod without a backup, this is bad.
@@ -121,7 +120,7 @@ These steps apply to any massive data load, but especially in case of deletions.
 	In all cases, study what operation you do and make sure it is the right one.
 	Once that is done...
 
-	As such, you are able to create insert, upsert, query and deletion jobs, and change select parts of it.
+	You are able to create insert, upsert, query and deletion jobs, and change select parts of it. That's because you are using a real data loading tool.
 	This is important because this means you can:
 	- Create a new Sandbox
 	- In Jitterbit, create a new Folder for each operation type you will do. Name it "mydatauploadname 20180805" for example. You will put your jobs in there for easier archival.
